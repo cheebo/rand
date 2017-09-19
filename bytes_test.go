@@ -1,11 +1,14 @@
-package gorand
+package rand_test
 
-import "testing"
+import (
+	"testing"
+	"github.com/cheebo/rand"
+)
 
 const length = 10
 
 func TestGenerateRandomBytes(t *testing.T) {
-	b, err := GenerateRandomBytes(length)
+	b, err := rand.GenerateRandomBytes(length)
 	if err != nil {
 		t.Fail()
 	}

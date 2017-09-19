@@ -1,4 +1,4 @@
-package gorand
+package rand
 
 import (
 	"crypto/rand"

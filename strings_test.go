@@ -1,15 +1,15 @@
-package gorand
+package rand
 
 import (
 	"testing"
 	"regexp"
-	"fmt"
+	"github.com/cheebo/rand"
 )
 
 const length = 1024
 
 func TestRandomAlpha(t *testing.T) {
-	alpha := RandomAlpha(length)
+	alpha := rand.RandomAlpha(length)
 	var valid = regexp.MustCompile(`[a-zA-Z]+`)
 	if len(alpha) != length {
 		t.Fail()
@@ -21,7 +21,7 @@ func TestRandomAlpha(t *testing.T) {
 
 
 func TestRandomAlphaNum(t *testing.T) {
-	alphaNum := RandomAlpha(length)
+	alphaNum := rand.RandomAlpha(length)
 	var valid = regexp.MustCompile(`[a-zA-Z0-9]+`)
 	if len(alphaNum) != length {
 		t.Fail()
@@ -32,7 +32,7 @@ func TestRandomAlphaNum(t *testing.T) {
 }
 
 func TestRandomString(t *testing.T) {
-	str := RandomString(length)
+	str := rand.RandomString(length)
 	var valid = regexp.MustCompile(`[a-zA-Z0-9\_\-\=\+\.\,\:\?\!\~\%\$\#\@\&\*]+`)
 	if len(str) != length {
 		t.Fail()
@@ -40,23 +40,4 @@ func TestRandomString(t *testing.T) {
 	if !valid.MatchString(str) {
 		t.Fail()
 	}
-}
-
-
-func ExampleRandomAlpha() {
-	alpha := RandomAlpha(8)
-	fmt.Println(alpha)
-	// Output: alpha random string
-}
-
-func ExampleRandomAlphaNum() {
-	alphaNum := RandomAlpha(8)
-	fmt.Println(alphaNum)
-	// Output: alpha-numerical random string
-}
-
-func ExampleRandomString() {
-	str := RandomAlpha(8)
-	fmt.Println(str)
-	// Output: random string with special characters
 }
